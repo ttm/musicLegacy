@@ -28,8 +28,9 @@ Download messages from one GMANE list:
     # are attributes of the bt object:
     bt=m.BasicTables()
 
-    # for frequency to midi and decibels to amplitude relations
+    # for frequency to midi and decibels to amplitude relations:
     co=m.BasicConverter()
+    # try co.db2Amp .amp2Db .hz2Midi .midi2Hz 
 
     # more in the way. Take a look at the above literature.
     # Enjoy!
