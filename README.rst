@@ -3,7 +3,9 @@ MASS is Music and Audio in Sample Sequences
 ==================================================================
 
 This project delivers routines for music oriented sound synthesis
-in a sample based system.
+in a sample based system. MASS can be though of as a sample level
+DAW system, in which the objects manipulated are in fact the array
+of samples describing the sound wave that will reach a listener ear.
 
 All parameters are updated in a sample by sample rate and calculations
 are made in 64 bit floating point. All operations are described by
@@ -22,8 +24,12 @@ Download messages from one GMANE list:
 
     import mass as m
 
-    wf=m.WaveForms()
-    sy=m.MonoSynth(wf)
+    # sine, triangle, square and sawtooth
+    # are attributes of the bt object:
+    bt=m.BasicTables()
 
-    melodic_line=sy.simpleLine([110,100,220,33.,14])
+    # for frequency to midi and decibels to amplitude relations
+    co=m.BasicConverter()
+
+    # more in the way. Take a look at the above literature.
     # Enjoy!

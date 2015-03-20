@@ -1,5 +1,6 @@
 import numpy as n
 class BasicConverter:
+    """Delivers most basic converters for amplitude and frequency"""
     def dB2Amp(self, db_difference):
         """Receives difference in decibels, returns amplitude proportion"""
         return 10.**(db_difference/20.)
