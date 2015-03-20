@@ -26,7 +26,7 @@ class Synth:
             self.tre_depth=tre_depth
             self.tre_freq= tre_freq
             self.tre_tab=tre_tab
-    def adsrSetup(self,A=50.,D=30,S=-20.,R=50,adsr_method="absolute"):
+    def adsrSetup(self,A=100.,D=40,S=-5.,R=50,adsr_method="absolute"):
         self.adsr_method=adsr_method # implement relative and False
         self.A=A
         self.D=D
@@ -54,14 +54,13 @@ class Synth:
                    self.Lambda_D),dtype=n.float)*self.a_S
         envelope=n.hstack((self.A_i, self.D_i, S, self.R_i))
         return envelope*audio_vec
-        return som*A_i
     def render(self,f0=220.,d=2.):
         """Render a note with f0 Hertz and d seconds"""
         self.note=self.rawRender(f0,d,self.tab,self.vib_freq,self.vib_depth,
                          self.vib_tab)
-        self.note_=self.note*self.tremoloEnvelope(self.tre_freq,self.tre_depth,
+        self.note=self.note*self.tremoloEnvelope(self.tre_freq,self.tre_depth,
                                         d, self.tre_tab)
-        self.note__=self.adsrApply(self.note_)
+        self.note=self.adsrApply(self.note)
         return self.note
     def tremoloEnvelope(self,fa=2.,V_dB=10.,d=2.,taba=BT.sine):
         Lambda=n.floor(self.f_a*d)

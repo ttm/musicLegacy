@@ -17,7 +17,7 @@ m.Utils.write(note)
 
 melody=n.hstack([sy.render(f,.2) for f in co.p2f(220,[0,7,7,5,6,7,0,4,7,0])])
 sy.vib_depth=3.
-sy.vib_freq=14.
+sy.vib_freq=1.
 sy.tab=bt.saw
 section2=n.hstack([sy.render(f,d) for f,d in zip(co.p2f(110,[0,7,7,5,6,7,0,4,7,0]),[.2,.4,.2,.2,.8,.2,.4,.2,.4])])
 
