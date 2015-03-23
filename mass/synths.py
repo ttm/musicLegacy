@@ -12,7 +12,7 @@ class Synth:
             self.tables=BasicTables()
         self.synthSetup()
         self.adsrSetup()
-    def synthSetup(self,tab=BT.triangle,vib_depth=.1,vib_freq=2., vib_tab=BT.sine, tre_depth=3.,tre_freq=2.,tre_tab=BT.sine):
+    def synthSetup(self,tab=BT.triangle,vib_depth=.1,vib_freq=2., vib_tab=BT.sine, tre_depth=3.,tre_freq=0.2,tre_tab=BT.sine):
         """Setup synth engine. ADSR is configured seperately"""
         self.tab=tab
         if vib_depth and vib_freq:
@@ -58,19 +58,20 @@ class Synth:
         """Render a note with f0 Hertz and d seconds"""
         self.note=self.rawRender(f0,d,self.tab,self.vib_freq,self.vib_depth,
                          self.vib_tab)
-        self.note=self.note*self.tremoloEnvelope(self.tre_freq,self.tre_depth,
+        self.tre_env=self.tremoloEnvelope(self.tre_freq,self.tre_depth,
                                         d, self.tre_tab)
+        self.note=self.note*self.tre_env
         self.note=self.adsrApply(self.note)
         return self.note
-    def tremoloEnvelope(self,fa=2.,V_dB=10.,d=2.,taba=BT.sine):
+    def tremoloEnvelope(self,tre_freq=2.,V_dB=10.,d=2.,taba=BT.sine):
         Lambda=n.floor(self.f_a*d)
         ii=n.arange(Lambda)
         Lt=len(taba)
-        Gammaa_i=n.floor(ii*fa*Lt/self.f_a) # índices para a LUT
+        Gammaa_i=n.floor(ii*tre_freq*Lt/self.f_a) # índices para a LUT
         Gammaa_i=n.array(Gammaa_i,n.int)
         # variação da amplitude em cada amostra
         A_i=taba[Gammaa_i%Lt] 
-        A_i=A_i*10.**(V_dB/20.)
+        A_i=1+A_i*10.**(V_dB/20.)
         return A_i
     def rawRender(self,f=200,d=2.,tab=BT.triangle,fv=2.,nu=2.,tabv=BT.sine):
         Lambda=n.floor(self.f_a*d)
