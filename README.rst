@@ -7,7 +7,14 @@ in a sample based system. MASS can be though of as a sample level
 DAW system, in which the objects manipulated are in fact the array
 of samples describing the sound wave that will reach a listener ear.
 
-All parameters are updated in a sample by sample rate and calculations
+Install with:
+
+    $ pip3 install music
+
+(sorry, mass package was already take :O2)
+
+Real time is possible but not the emphasis:
+all parameters are updated sample by sample and calculations
 are made in 64 bit floating point. All operations are described by
 equations that directly relates audio samples to musical aspects.
 Detailed descriptions can be found in:
