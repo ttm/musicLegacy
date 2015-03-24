@@ -56,6 +56,9 @@ Download messages from one GMANE list:
     # E.g. m.pieces.FourHubsDance is used by gmane toolbox
     # to make sonified animations:
     # https://www.youtube.com/watch?v=YxDiwzAUPeU
+    # sonicLine1 and sonicLine2 attributes are
+    # most basic sonic "templates" used by:
+    # https://pypi.python.org/pypi/gmane to make social music
 
     # more in the way. Take a look at the above literature.
     # Enjoy!
