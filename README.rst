@@ -51,6 +51,11 @@ Download messages from one GMANE list:
 
     ut.write(song,"song.wav")
 
+    # A core purpose of the toolbox is to serve other
+    # toolboxes on the development sonic representations
+    # E.g. m.pieces.FourHubsDance is used by gmane toolbox
+    # to make sonified animations:
+    # https://www.youtube.com/watch?v=YxDiwzAUPeU
 
     # more in the way. Take a look at the above literature.
     # Enjoy!

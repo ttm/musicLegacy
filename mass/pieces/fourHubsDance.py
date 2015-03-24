@@ -53,8 +53,8 @@ class FourHubsDance:
             line=n.hstack([self.sy.render(f,self.beat_duration)
                 for f in self.freqs[::4]])
         return line
-    def makeGaussianNoise(self,mean,std):
-        Lambda = 2*self.samples_beat # Lambda sempre par
+    def makeGaussianNoise(self,mean,std,DUR=2):
+        Lambda = DUR*self.samples_beat # Lambda sempre par
         df = self.samplerate/float(Lambda)
         MEAN=mean
         STD=.1
@@ -85,7 +85,7 @@ class FourHubsDance:
         # fazer tre_freq variar conforme measures2
         return r
 
-    def sonicLine2(self,measures1=[7,2,17],measures2=[-5,17,22]):
+    def sonicLine2(self,measures1=[7,2,17],tmean=.5,DUR=2):
         """Noise controlled by two measures vectors.
         
         Central frequency by measures1 
@@ -95,11 +95,12 @@ class FourHubsDance:
         self.measures1=measures1
         ### 2.50 Ruido branco
         noise=n.hstack(
-                [self.makeGaussianNoise(mean=.5+delta,std=.1) for delta
-                    in (measures1[::8]-0.5)*.2])
+                [self.makeGaussianNoise(mean=tmean+delta,std=.1, DUR=DUR) for delta
+                    in (measures1[::4*DUR]-0.5)*.2])
 
         self.noise=noise=ut.normalize(noise)
         # multiply tre_freq by a factor of measures2
-        envelope=n.hstack([self.sy.tremoloEnvelope(tre_freq,d=self.beat_duration/4,V_dB=20.) for tre_freq in 8+7*(2*(measures2-0.5))])
+        #envelope=n.hstack([self.sy.tremoloEnvelope(tre_freq,d=self.beat_duration/4,V_dB=20.) for tre_freq in 8+7*(2*(measures2-0.5))])
         # if necessary, low-pass this envelope
-        return noise[:len(envelope)]*envelope
+        #return noise[:len(envelope)]*envelope
+        return noise
