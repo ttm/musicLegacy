@@ -26,7 +26,7 @@ class Synth:
             self.tre_depth=tre_depth
             self.tre_freq= tre_freq
             self.tre_tab=tre_tab
-    def adsrSetup(self,A=100.,D=40,S=-5.,R=50,adsr_method="absolute"):
+    def adsrSetup(self,A=100.,D=40,S=-5.,R=50,render_note=False, adsr_method="absolute"):
         self.adsr_method=adsr_method # implement relative and False
         self.A=A
         self.D=D
@@ -48,6 +48,8 @@ class Synth:
         #R=self.a_S-self.a_S*((ii-(self.Lambda-self.Lambda_R))/(self.Lambda_R-1))
         R=self.a_S*(n.linspace(1,0,self.Lambda_R))
         self.R_i=n.copy(R)
+        if render_note:
+            return self.render(d=.5)
     def adsrApply(self,audio_vec):
         Lambda=len(audio_vec)
         S=n.ones(Lambda-self.Lambda_R-(self.Lambda_A+
