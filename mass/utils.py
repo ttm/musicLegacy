@@ -12,6 +12,10 @@ class Utils:
         pass
     def normalize(self, vector):
         return -1+2*(vector-vector.min())/(vector.max()-vector.min())
+    def normalizeRows(self,vector):
+        """Normalize each row of a bidimensional vector to [0,1]"""
+        vector=((n.subtract(self.vector.T,self.vector.min(1)) / (self.vector.max(1)-self.vector.min(1))).T)
+        return vector
     def write(self,vector,filename="fooname.wav", normalize="yes",f_a=44100):
         if normalize:
             vector=self.normalize(vector)
