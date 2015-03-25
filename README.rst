@@ -13,6 +13,19 @@ Install with:
 
 (sorry, mass package was already take :O2)
 
+Hack demo songs and make wav files with:
+
+    $ python3 tests/testSong.py
+
+To hear testSong.wav or
+
+    $ python3 tests/testSong2.py
+
+to hear vibrosong.wav. To hack the MASS package itself, and use it from the repo, don't forget to:
+
+    $ pip install -e <path/to/repo>
+
+
 Real time is possible but not the emphasis:
 all parameters are updated sample by sample and calculations
 are made in 64 bit floating point. All operations are described by
