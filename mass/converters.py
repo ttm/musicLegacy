@@ -14,6 +14,8 @@ class BasicConverter:
         """Receives midi note value and returns corresponding Herz frequency"""
         #return 440*n.log2((69+midi_val)/69)
         return 440*2**((midi_val-69)/12.)
+    def midi2HzInterval(self,midi_interval):
+        return 2**(midi_interval/12)
     def p2f(self,f0=220.,semitones=[0,7,7,4,7,0]):
         return [f0*2**(i/12) for i in semitones]
 
