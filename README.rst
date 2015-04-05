@@ -1,9 +1,9 @@
 ==================================================================
-MASS is Music and Audio in Sample Sequences
+music is a python package from MASS modeling. MASS is Music and Audio in Sample Sequences
 ==================================================================
 
 This project delivers routines for music oriented sound synthesis
-in a sample based system. MASS can be though of as a sample level
+in a sample based system. Music can be though of as a sample level
 DAW system, in which the objects manipulated are in fact the array
 of samples describing the sound wave that will reach a listener ear.
 
@@ -42,7 +42,7 @@ Download messages from one GMANE list:
 
 .. code:: python
 
-    import mass as m
+    import music as m
 
     # sine, triangle, square and sawtooth
     # are attributes of the bt object:
