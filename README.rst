@@ -1,6 +1,6 @@
-==================================================================
+=========================================================================================
 music is a python package from MASS modeling. MASS is Music and Audio in Sample Sequences
-==================================================================
+=========================================================================================
 
 This project delivers routines for music oriented sound synthesis
 in a sample based system. Music can be though of as a sample level
