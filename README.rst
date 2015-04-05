@@ -1,17 +1,16 @@
-=========================================================================================
-music is a python package from MASS modeling. MASS is Music and Audio in Sample Sequences
-=========================================================================================
+=============================================================
+music is a toolbox for music synthesis (MASS modeling)
+=============================================================
 
 This project delivers routines for music oriented sound synthesis
 in a sample based system. Music can be though of as a sample level
 DAW system, in which the objects manipulated are in fact the array
 of samples describing the sound wave that will reach a listener ear.
+The MASS (music and audio in sample sequences) modeling is used[1][2].
 
 Install with:
 
     $ pip3 install music
-
-(sorry, mass package was already take :O2)
 
 Hack demo songs and make wav files with:
 
