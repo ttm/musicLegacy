@@ -47,8 +47,8 @@ class FourHubsDance:
         self.freqs=co.p2f(f0,self.notes__)
         if len(rythmic_pattern)==4:
             line=n.hstack([self.sy.render(f,self.beat_duration/4)
-     if (rythmic_pattern[i%4]==1) else n.zeros(self.samples_beat/4)
-                for i,f in enumerate(self.freqs)])
+                 if (rythmic_pattern[i%4]==1) else n.zeros(int(self.samples_beat/4))
+                            for i,f in enumerate(self.freqs)])
         elif len(rythmic_pattern)==1:
             line=n.hstack([self.sy.render(f,self.beat_duration)
                 for f in self.freqs[::4]])
@@ -56,15 +56,16 @@ class FourHubsDance:
     def makeGaussianNoise(self,mean,std,DUR=2):
         Lambda = DUR*self.samples_beat # Lambda sempre par
         df = self.samplerate/float(Lambda)
+        Lambda = int(Lambda)
         MEAN=mean
         STD=.1
-        coefs = n.exp(1j*n.random.uniform(0, 2*n.pi, Lambda))
+        coefs = n.exp(1j*n.random.uniform(0, 2*n.pi, int(Lambda)))
         # real par, imaginaria impar
-        coefs[Lambda/2+1:] = n.real(coefs[1:Lambda/2])[::-1] - 1j * \
-            n.imag(coefs[1:Lambda/2])[::-1]
+        coefs[Lambda//2+1:] = n.real(coefs[1:Lambda//2])[::-1] - 1j * \
+            n.imag(coefs[1:Lambda//2])[::-1]
         coefs[0] = 0.  # sem bias
         if Lambda%2==0:
-            coefs[Lambda/2] = 0.  # freq max eh real simplesmente
+            coefs[Lambda//2] = 0.  # freq max eh real simplesmente
 
         # as frequências relativas a cada coeficiente
         # acima de Lambda/2 nao vale
@@ -72,8 +73,8 @@ class FourHubsDance:
         f0 = 15.  # iniciamos o ruido em 15 Hz
         f1=(mean-std/2)*3000
         f2=(mean+std/2)*3000
-        i1 = n.floor(f1/df)  # primeiro coef a valer
-        i2 = n.floor(f2/df)  # ultimo coef a valer
+        i1 = int(n.floor(f1/df))  # primeiro coef a valer
+        i2 = int(n.floor(f2/df))  # ultimo coef a valer
         coefs[:i1] = n.zeros(i1)
         coefs[i2:]=n.zeros(len(coefs[i2:]))
 
