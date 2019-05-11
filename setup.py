@@ -9,22 +9,22 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='music',
+    name='musicLegacy',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='0.1.dev10',
+    version='0.1.dev13',
 
-    description='MASS is Music and Audio in Sample Sequences',
+    description='Yet another music package using the MASS (Music and Audio in Sample Sequences) framework',
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/ttm/mass',
+    url='https://github.com/ttm/musicLegacy',
 
     # Author details
     author='Renato Fabbri',
-    author_email='listamacambira@googlegroups.com',
+    author_email='renato.fabbri@gmail.com',
 
     # Choose your license
     license='MIT',
@@ -68,14 +68,14 @@ setup(
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
-    packages=["music"],
+    packages=find_packages(),
     #packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
 
     # List run-time dependencies here.  These will be installed by pip when your
     # project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    #install_requires=['peppercorn'],
+    install_requires=['numpy', 'matplotlib', 'scipy', 'setuptools'],
 
     # List additional groups of dependencies here (e.g. development dependencies).
     # You can install these using the following syntax, for example:

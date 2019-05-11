@@ -10,7 +10,7 @@ The MASS (music and audio in sample sequences) modeling is used[1][2].
 
 Install with:
 
-    $ pip3 install music
+    $ pip3 install musicLegacy
 
 Hack demo songs and make wav files with:
 
@@ -35,13 +35,16 @@ Detailed descriptions can be found in:
 
 - the msc dissertation "Música no áudio digital: descrição psicofísica e caixa de ferramentas": https://github.com/ttm/dissertacao/blob/master/dissertacaoCorrigida.pdf?raw=true
 
+Also check the music Python package: https://github.com/ttm/music
+
+
 Usage example
 =================
 Download messages from one GMANE list:
 
 .. code:: python
 
-    import music as m
+    import musicLegacy as m
 
     # sine, triangle, square and sawtooth
     # are attributes of the bt object:

@@ -1,4 +1,4 @@
-import music as m
+import musicLegacy as m
 import  importlib
 #from IPython.lib.deepreload import reload as dreload
 importlib.reload(m.converters)

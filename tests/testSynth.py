@@ -1,4 +1,4 @@
-import music as m, numpy as n
+import musicLegacy as m, numpy as n
 import  importlib
 #from IPython.lib.deepreload import reload as dreload
 importlib.reload(m.synths)
